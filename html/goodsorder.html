@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css.map">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/goodsorder.css">
+<title>电商管理系统(订单信息)</title>
+</head>
+<body>
+<div class="table-wrapper">
+   		<div class="main-header">
+			<div class="navbar navbar-static-top">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand"><b>电商平台管理系统</b></a>
+				</div>
+				<!--顶部导航栏菜单按钮-->
+				
+				<!-- /.navbar-collapse -->
+				<!--顶部导航栏右侧的-->
+			</div>
+		</div>
+		<div class="box-header with-border">
+						<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+						<ul class="nav navbar-nav">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="good">商品信息 <span
+                                class=""></span></a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="goodbrand"
+                                data-toggle="dropdown">商品品牌信息<span class=""></span></a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="goodsupplier"
+                                data-toggle="dropdown">供应商信息<span class=""></span></a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="goodsort"
+                                data-toggle="dropdown">商品类型<span class=""></span></a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="goodorder"
+                                data-toggle="dropdown">订单信息<span class=""></span></a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle btn-sm" id="record"
+								data-toggle="dropdown">结业报告<span class=""></span></a></li>
+					</ul>
+				</div>
+						<div class="form-inline pull-right">
+							<button type="button" name="search" id="search-btn"
+								class="btn btn-default pull-right searchBtn" title="查询">
+								<i class="fa fa-search"></i>
+							</button>
+							<input type="text"
+								class="form-control pull-right name-search position-search"
+								id="findBrandById" placeholder="编号" />
+						</div>
+					</div>
+					<div class="box-header with-border">
+						<button type="button" name="add" id="addbrand"
+							class="btn btn-default pull-left addBtn btn-default">
+							<i class="fa fa-plus-circle btn-default"></i>添加
+						</button>
+						<button type="button" name="cancel" id="cancel-btn"
+							class="btn  pull-left resetBtn btn-default" title="刷新">
+							<i class="fa fa-refresh btn-default"></i>订购
+						</button>
+						<button type="button" name="returnBtn" id="returnBtn"
+							class="btn  pull-left resetBtn btn-default" title="返回">
+							<i class="fa fa-left btn-default"></i>返回
+						</button>
+						</div>
+	 <table class="fl-table" id="dataTable">
+        <thead>
+        <tr>
+            <th>序号</th>
+			<th>订单号</th>
+			<th>供应商编号</th>
+			<th>顾客编号</th>
+			<th>邮编</th>
+			<th>下单时间</th>
+			<th>订单总价</th>
+			<th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+			<tr>
+				<td>1</td>
+				<td>Y001</td>
+				<td>S001</td>
+				<td>C001</td>
+				<td>855555</td>
+				<td>2012-03-12</td>
+				<td>60元</td>
+				<td><button color='blue' class='btn btn-sm btn-primary delBtn' id='editBtn'>编辑</button>
+					<button color='blue' class='btn btn-sm btn-primary delBtn'>删除</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Y002</td>
+				<td>S002</td>
+				<td>C002</td>
+				<td>111111</td>
+				<td>2021-11-12</td>
+				<td>10000元</td>
+				<td><button color='blue' class='btn btn-sm btn-primary delBtn' id='editBtn'>编辑</button>
+					<button color='blue' class='btn btn-sm btn-primary delBtn'>删除</button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Y003</td>
+				<td>S003</td>
+				<td>C003</td>
+				<td>222222</td>
+				<td>2022-06-30</td>
+				<td>330元</td>
+				<td><button color='blue' class='btn btn-sm btn-primary delBtn' id='editBtn'>编辑</button>
+					<button color='blue' class='btn btn-sm btn-primary delBtn'>删除</button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Y004</td>
+				<td>S004</td>
+				<td>C004</td>
+				<td>333333</td>
+				<td>2021-11-11</td>
+				<td>1元</td>
+				<td><button color='blue' class='btn btn-sm btn-primary delBtn' id='editBtn'>编辑</button>
+					<button color='blue' class='btn btn-sm btn-primary delBtn'>删除</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Y005</td>
+				<td>S005</td>
+				<td>C005</td>
+				<td>666666</td>
+				<td>2003-11-12</td>
+				<td>10元</td>
+				<td><button color='blue' class='btn btn-sm btn-primary delBtn' id='editBtn'>编辑</button>
+					<button color='blue' class='btn btn-sm btn-primary delBtn'>删除</button></td>
+			</tr>
+        </tbody>
+    </table>
+    <div class="modal" id="EdgeModal">
+		<div class="modal-dialog" role="dialog">
+			<div class="modal-content">
+				<form id="userEditForm">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">
+							<strong>订单信息</strong>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" name="no" id="code" />
+						<div class="form-horizontal">
+							<div class="row">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">订单编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderId" id="orderId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">供应商编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="supplyId" id="supplyId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">顾客编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="clientId" id="clientId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">邮编</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="emailId" id="emailId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">下单时间</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderTime" id="orderTime" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">订单总价</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderPrice" id="orderPrice" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>		
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary saveBtn "id="save_brand">保存</button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">返回</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div> 
+	<div class="modal" id="tEdgeModal">
+		<div class="modal-dialog" role="dialog">
+			<div class="modal-content">
+				<form id="userEditForm">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">
+							<strong>订单信息</strong>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" name="no" id="code" />
+						<div class="form-horizontal">
+							<div class="row">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">订单编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderId" id="orderId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">供应商编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="supplyId" id="supplyId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">顾客编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="clientId" id="clientId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">邮编</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="emailId" id="emailId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">下单时间</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderTime" id="orderTime" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">订单总价</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderPrice" id="orderPrice" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									
+								</div>
+
+							</div>
+						</div>		
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary saveBtn "id="tsave_brand">保存</button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">返回</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div> 
+	
+		<div class="modal" id="oEdgeModal">
+		<div class="modal-dialog" role="dialog">
+			<div class="modal-content">
+				<form id="userEditForm">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">
+							<strong>商品信息</strong>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" name="no" id="code" />
+						<div class="form-horizontal">
+							<div class="row">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">订购商品编号</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="orderId" id="orderId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>
+									<label class="col-sm-2 control-label">订购数量</label>
+									<div class="col-sm-4">
+										<div class="col-md-10">
+											<input class="form-control" type="text" name="supplyId" id="supplyId" />
+										</div>
+										<div class="col-md-2">
+											<span style="color: #F00; font-size: 30px">*</span>
+										</div>
+									</div>									
+								</div>
+							</div>
+						</div>		
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary saveBtn "id="osave_brand">保存</button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">返回</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div> 
+	
+</div>
+<script type="text/javascript" src="../jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$('#goodsupplier').on('click',function(){
+	window.location='goodssupplier.html';
+})
+$('#good').on('click',function(){
+	window.location='goods.html';
+})
+$('#goodsort').on('click',function(){
+	window.location='goodsspecification.html';
+})
+$('#goodbrand').on('click',function(){
+	window.location='goodsbrand.html';
+})
+$('#goodorder').on('click',function(){
+	window.location='goodsorder.html';
+})
+
+$('#search-btn').on('click',function(){
+	var key=$('#findBrandById').val();
+	findgoodbrand(key);	
+})
+$('#save_brand').on('click',function(){
+	jQuery("#EdgeModal").modal('show');
+});
+$('#tsave_brand').on('click',function(){
+	jQuery("#tEdgeModal").modal('show');
+});
+$('#addbrand').on('click',function(){
+	jQuery("#tEdgeModal").modal('show');
+});
+$('#editBtn').on('click',function(){
+	jQuery("#EdgeModal").modal('show');
+});
+$('#record').on('click',function(){
+	window.location='https://blog.csdn.net/qq_52482704/article/details/125541253?spm=1001.2014.3001.5502';
+})
+</script>
+
+</body>
+</html>
